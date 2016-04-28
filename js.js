@@ -1,12 +1,23 @@
-var Name = "";
+
+$('#start_button').on('click', function (e) {
+
+     Start();
+
+})
+
+
+
+
+
+var Name = "Zoey";
 var Level = 1;
-var audio = new Audio('http://soundfxcenter.com/video-games/sonic-the-hedgehog/26f8b9_Sonic_Ring_Sound_Effect.mp3');
+//var audio = new Audio('http://soundfxcenter.com/video-games/sonic-the-hedgehog/26f8b9_Sonic_Ring_Sound_Effect.mp3');
 
 function Start(){
-	Name = document.getElementsByName("name")[0].value;
+	//Name = document.getElementsByName("name")[0].value;
 	Name = Name.toUpperCase();
 	document.getElementById('Title').innerHTML = '<H1 style="text-align: center;font-family: Arial;">'+Name+'</h1>';
-	document.getElementById('test').innerHTML = '';
+	document.getElementById('Body').innerHTML = '';
 	NewBoard();
 	};
 
@@ -18,7 +29,7 @@ function Start(){
 	var Random = Math.floor((Math.random() * total)+1);;
 	var Output;
 	var Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	audio.play();
+//	audio.play();
 	Output = '<table>';
 	for (x = 0; x < Rows; x++) {
 	Output += '<tr>';
@@ -29,14 +40,15 @@ function Start(){
 				for (l = 0; l < Name.length;l++) {
 				RandomName += Letters.charAt(Math.floor(Math.random() * Letters.length));
 	};
-				Output += '<td><a class="btn" id="btn'+count+'" href="#btn'+count+'">'+RandomName+'</a></td>';
+				Output += '<td><button class="btn btn-lg bt-primary" id="btn'+count+'" href="#btn'+count+'">'+RandomName+'</button></td>';
 			} else {
-				Output += '<td><a class="btn" onclick="NewBoard()">'+Name+'</a></td>';
+				Output += '<td><button class="btn btn-lg bt-primary" onclick="NewBoard()">'+Name+'</button></td>';
 			};
 		};
 		Output += '</tr>';		
 	};
 	Output += '</table>';
-	document.getElementById('test').innerHTML = Output;
+	$("#Body").html(Output);
+	//document.getElementById('Body').innerHTML = Output;
 	Level += .2;
 };
